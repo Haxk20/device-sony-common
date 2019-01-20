@@ -136,6 +136,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.lmk.kill_timeout_ms=100 \
     ro.lmk.use_minfree_levels=true
 
+# Enable A2DP offloading in the audio HAL
+AUDIO_FEATURE_ENABLED_A2DP_OFFLOAD := true
+
 # Bluetooth Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.bluetooth.bluetooth_audio_hal.disabled=true
