@@ -12,35 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Audio
-PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio.bluetooth.default \
-    audio.hearing_aid.default \
-    audio.r_submix.default \
-    audio.usb.default \
-    libaudio-resampler
-
-PRODUCT_PACKAGES += \
-    libbthost_if
-
-# For audio.primary
-PRODUCT_PACKAGES += \
-    cplay \
-    libaudioroute \
-    libtinyalsa \
-    tinycap \
-    tinymix \
-    tinypcminfo \
-    tinyplay
-
-# Audio effects
-PRODUCT_PACKAGES += \
-    libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libvolumelistener
-
 # TODO Local package in crosshatch \
     libqcomvoiceprocessingdescriptors \
 
@@ -54,56 +25,10 @@ PRODUCT_PACKAGES += \
     libqdutils \
     libqdMetaData
 
-# OMX
-PRODUCT_PACKAGES += \
-    libc2dcolorconvert \
-    libstagefrighthw \
-    libOmxCore \
-    libmm-omxcore \
-    libOmxVdec \
-    libOmxVdecHevc \
-    libOmxVenc
-
-# GPS
-PRODUCT_PACKAGES += \
-    libloc_core \
-    libgps.utils \
-    liblocation_api \
-    libloc_pla \
-    libgnss
-
-# Location
-PRODUCT_PACKAGES += \
-    libloc_api_v02 \
-    libloc_ds_api \
-    libgnsspps
-
-# IPA
-PRODUCT_PACKAGES += \
-    libqti_vndfwk_detect.vendor \
-    IPACM_cfg.xml \
-    ipacm
-
-# WLAN
-PRODUCT_PACKAGES += \
-    hostapd \
-    libwpa_client \
-    wpa_supplicant \
-    wpa_supplicant.conf \
-    libwpa_client
-
 # NFC packages
 PRODUCT_PACKAGES += \
     NfcNci \
     Tag
-
-# CAMERA
-PRODUCT_PACKAGES += \
-    libmmcamera_interface \
-    libmmjpeg_interface \
-    libmmlib2d_interface \
-    libmm-qcamera \
-    libqomx_core
 
 # OSS Time service
 PRODUCT_PACKAGES += \
@@ -117,18 +42,6 @@ PRODUCT_PACKAGES += \
 # OSS WIFI and BT MAC tool
 PRODUCT_PACKAGES += \
     macaddrsetup
-
-# Telephony
-PRODUCT_PACKAGES += \
-    HookMediator \
-    ImsHelper \
-    ModemConfig \
-    QcRilAm \
-    SimDetect
-
-# QCOM Data
-PRODUCT_PACKAGES += \
-    librmnetctl
 
 # RIL
 PRODUCT_PACKAGES += \
