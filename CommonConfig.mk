@@ -149,30 +149,34 @@ DEVICE_MATRIX_FILE   := $(COMMON_PATH)/vintf/compatibility_matrix.xml
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.nxp.nfc.interfaces.xml
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.qualcomm.qti.dpm.xml
 
+# RILD/QCRILD:
+
+# TODO: Move definition to platform,
+# change uses to `ifeq ($(PRODUCT_SIM_VARIANT),ds)
 ifeq ($(PRODUCT_DEVICE_DS),true)
-ifeq ($(TARGET_USE_QCRILD),true)
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hw.qcradio_ds.xml
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.qcradio_ds.xml
+  PRODUCT_SIM_VARIANT := ds
 else
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hw.radio_ds.xml
-endif
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.radio_ds.xml
-else
-ifeq ($(TARGET_USE_QCRILD),true)
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hw.qcradio_ss.xml
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.qcradio_ss.xml
-else
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hw.radio_ss.xml
-endif
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.radio_ss.xml
+  PRODUCT_SIM_VARIANT := ss
 endif
 
+# Contains all common radio interfaces, as well as IQtiRadio@1.0:
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.radio_$(PRODUCT_SIM_VARIANT).xml
+
+# TODO: Not sure if we should change this to PRODUCT_RADIO_VARIANT, too
 ifeq ($(TARGET_USE_QCRILD),true)
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hardware.radio.config.xml
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.radio.uceservice.xml
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.imsservices.xml
-DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.somc.modem.xml
+  # qcrild hosts IQtiRadio@2.x, _too_:
+  DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.qcradio_$(PRODUCT_SIM_VARIANT).xml
+  DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hardware.radio.config.xml
+  DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.radio.uceservice.xml
+  DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.hw.imsservices.xml
+  DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/vendor.somc.modem.xml
+  RADIO_VARIANT := qcradio
+else
+  RADIO_VARIANT := radio
 endif
+
+# Always include the Android service declarations:
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hw.$(RADIO_VARIANT)_$(PRODUCT_SIM_VARIANT).xml
 
 ifeq ($(TARGET_KEYMASTER_V4),true)
 DEVICE_MANIFEST_FILE += $(COMMON_PATH)/vintf/android.hw.keymaster_v4.xml
