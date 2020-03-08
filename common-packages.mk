@@ -121,7 +121,8 @@ PRODUCT_PACKAGES += \
 # Telephony
 PRODUCT_PACKAGES += \
     QcRilAm \
-    SimDetect
+    SimDetect \
+    HookMediator
 
 # QCOM Data
 PRODUCT_PACKAGES += \
