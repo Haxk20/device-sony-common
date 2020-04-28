@@ -120,9 +120,10 @@ PRODUCT_PACKAGES += \
 
 # Telephony
 PRODUCT_PACKAGES += \
+    HookMediator \
+    ImsHelper \
     QcRilAm \
-    SimDetect \
-    HookMediator
+    SimDetect
 
 # QCOM Data
 PRODUCT_PACKAGES += \
