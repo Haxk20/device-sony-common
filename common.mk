@@ -125,6 +125,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_PATH)/rootdir/vendor/etc/apns-conf.xml:system/etc/apns-conf.xml
 
+MODEM_CONFIG := $(shell find $(COMMON_PATH)/rootdir/vendor/oem -type f -printf '%p:$(TARGET_COPY_OUT_VENDOR)/oem/%P\n')
+$(warning $(MODEM_CONFIG))
+PRODUCT_COPY_FILES += $(MODEM_CONFIG)
+
 -include device/sony/customization/customization.mk
 
 $(call inherit-product, device/sony/common/common-init.mk)
