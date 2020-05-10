@@ -122,6 +122,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     HookMediator \
     ImsHelper \
+    ModemConfig \
     QcRilAm \
     SimDetect
 
