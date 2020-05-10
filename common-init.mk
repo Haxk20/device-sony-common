@@ -62,3 +62,8 @@ PRODUCT_PACKAGES += \
     init.qcom.cdspstart.sh \
     init.qcom.ipastart.sh \
     init.qcom.slpistart.sh
+
+# modemswitcher
+PRODUCT_PACKAGES += \
+    vendor.somc.hardware.miscta@1.0-service.rc \
+    vendor.somc.hardware.modemswitcher@1.0-service.rc
