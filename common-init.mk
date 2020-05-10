@@ -66,4 +66,5 @@ PRODUCT_PACKAGES += \
 # modemswitcher
 PRODUCT_PACKAGES += \
     vendor.somc.hardware.miscta@1.0-service.rc \
-    vendor.somc.hardware.modemswitcher@1.0-service.rc
+    vendor.somc.hardware.modemswitcher@1.0-service.rc \
+    init.sony-modem-switcher.rc
